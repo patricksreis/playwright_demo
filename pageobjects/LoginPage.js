@@ -7,8 +7,7 @@ class LoginPage {
         this.password = page.getByPlaceholder('Password');
         this.loginButton=  page.getByText('Login');
         this.logoutButton = page.getByText('Logout');
-        this.openMenuButton = page.locator('#react-burger-menu-btn');
-    
+        this.openMenuButton = page.getByRole('button', { name: 'Open Menu' })
     }
     
     async goTo()
@@ -28,8 +27,8 @@ class LoginPage {
     {
         await this.openMenuButton.click();
         await this.logoutButton.click();     
-
     
     }
+
 }
 module.exports = {LoginPage};

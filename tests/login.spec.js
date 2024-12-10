@@ -5,7 +5,7 @@ const exp = require('constants');
 const { before, beforeEach } = require('node:test');
 
 const senha = 'secret_sauce';
-test.describe('Testes de login', () => {
+test.describe('Testes com login correto', () => {
   let loginPage;
 
 test.beforeEach(async ({ page }) => {
@@ -21,15 +21,19 @@ test('login com um usuario valido', async ({ page }) => {
 
 });
 
-test.skip('logout com sucesso', async ({ page }) => {
+test('logout com sucesso', async ({ page }) => {
   
   
-  loginPage.logout();
-  const currentURL = page.url();
+  let currentURL = page.url();
   // Validar a URL
   expect(currentURL).toBe('https://www.saucedemo.com/inventory.html');
+  
+  await loginPage.logout();
 
+  currentURL = page.url();
+  expect(currentURL).toBe('https://www.saucedemo.com/');
 });
+
 });
 
 test('login com um usuario invalido', async ({ page }) => {
