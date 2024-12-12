@@ -16,7 +16,7 @@ export default defineConfig({
     }),
     ["html", { open: "never" }],
   ],
-  //workers: 2,
+  workers: 2,
   use: {
     screenshot: "on",
     trace: "on",

@@ -60,7 +60,7 @@ test('deve prosseguir para a página de checkout', async ({ page }) => {
     await expect(checkoutInformation).toHaveText('Checkout: Your Information')
 }); 
 
-  test('deve completar o processo de checkout', async ({ page }) => {
+  test('deve ser possivel realizar um pedido', async ({ page }) => {
     await storePage.addToCart()
   
     await storePage.fullCheckout('teste','teste','123')

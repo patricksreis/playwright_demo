@@ -14,24 +14,24 @@ test.beforeEach(async ({ page }) => {
   await loginPage.login('standard_user', senha);
 });
 
-test('deve realizar login com sucesso', async ({ page }) => {
-  const currentURL = page.url();
-  // Validar a URL
-  expect(currentURL).toBe('https://www.saucedemo.com/inventory.html');
+  test('deve realizar login com sucesso', async ({ page }) => {
+    const currentURL = page.url();
+    // Validar a URL
+    expect(currentURL).toBe('https://www.saucedemo.com/inventory.html');
 
-});
+  });
 
-test('deve realizar logout com sucesso', async ({ page }) => {
-  
-  
-  let currentURL = page.url();
-  // Validar a URL
-  expect(currentURL).toBe('https://www.saucedemo.com/inventory.html');
-  
-  await loginPage.logout();
+  test('deve realizar logout com sucesso', async ({ page }) => {
+    
+    
+    let currentURL = page.url();
+    // Validar a URL
+    expect(currentURL).toBe('https://www.saucedemo.com/inventory.html');
+    
+    await loginPage.logout();
 
-  currentURL = page.url();
-  expect(currentURL).toBe('https://www.saucedemo.com/');
+    currentURL = page.url();
+    expect(currentURL).toBe('https://www.saucedemo.com/');
 });
 
 });
