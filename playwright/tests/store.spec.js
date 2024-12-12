@@ -16,7 +16,7 @@ test.beforeEach(async ({ page }) => {
   await loginPage.login('standard_user', senha);
 });
 
-test('adicionar um item no carrinho', async ({ page }) => {
+test('deve adicionar um item no carrinho', async ({ page }) => {
   await storePage.addToCart()
   
   const element = await page.locator('.inventory_item_name')
@@ -24,13 +24,13 @@ test('adicionar um item no carrinho', async ({ page }) => {
   await expect(element).toHaveText('Sauce Labs Backpack')
 });
 
-test('selecionar um filtro de produtos', async ({ page }) => {
+test('deve selecionar um filtro de produtos', async ({ page }) => {
   await storePage.filter('Name (Z to A)')
   const nameShirt = 'Test.allTheThings() T-Shirt (Red)'
   await expect(await page.locator('.inventory_item_name').first()).toHaveText(nameShirt)
 });
 
-test('remover item do carrinho', async ({ page }) => {
+test('deve remover item do carrinho', async ({ page }) => {
   await storePage.addToCart()
 
   const cartAdd = await page.locator('[data-test="shopping-cart-badge"]')
@@ -42,7 +42,7 @@ test('remover item do carrinho', async ({ page }) => {
   await expect(cartAdd).toHaveCount(0)
 });
 
-test('interagir com menu lateral - sobre o site', async ({ page }) => {
+test('deve acessar a pagina sobre o website', async ({ page }) => {
     await storePage.aboutWebSite()
   
     const currentURL = page.url();
@@ -50,7 +50,7 @@ test('interagir com menu lateral - sobre o site', async ({ page }) => {
     await expect(currentURL).toBe('https://saucelabs.com/')
   });
 
-test('compra até o checkout', async ({ page }) => {
+test('deve prosseguir para a página de checkout', async ({ page }) => {
     await storePage.addToCart()
   
     await storePage.checkout()
@@ -60,7 +60,7 @@ test('compra até o checkout', async ({ page }) => {
     await expect(checkoutInformation).toHaveText('Checkout: Your Information')
 }); 
 
-  test('checkout completo', async ({ page }) => {
+  test('deve completar o processo de checkout', async ({ page }) => {
     await storePage.addToCart()
   
     await storePage.fullCheckout('teste','teste','123')

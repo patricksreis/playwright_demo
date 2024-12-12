@@ -14,14 +14,14 @@ test.beforeEach(async ({ page }) => {
   await loginPage.login('standard_user', senha);
 });
 
-test('login com um usuario valido', async ({ page }) => {
+test('deve realizar login com sucesso', async ({ page }) => {
   const currentURL = page.url();
   // Validar a URL
   expect(currentURL).toBe('https://www.saucedemo.com/inventory.html');
 
 });
 
-test('logout com sucesso', async ({ page }) => {
+test('deve realizar logout com sucesso', async ({ page }) => {
   
   
   let currentURL = page.url();
@@ -36,7 +36,7 @@ test('logout com sucesso', async ({ page }) => {
 
 });
 
-test('login com um usuario invalido', async ({ page }) => {
+test('deve retornar um erro no login com um usuario invalido', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.goTo();
   await loginPage.login('invalido_usuario', senha);
